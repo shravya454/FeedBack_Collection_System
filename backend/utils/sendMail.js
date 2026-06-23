@@ -1,28 +1,48 @@
-const nodemailer = require('nodemailer');
+const nodemailer = require("nodemailer");
 
 const transporter = nodemailer.createTransport({
-    service: 'gmail',
+    host: "smtp.gmail.com",
+    port: 587,
+    secure: false,
     auth: {
         user: process.env.EMAIL_USER,
         pass: process.env.EMAIL_PASS
     }
 });
 
+// verify connection once (VERY IMPORTANT for debugging)
+transporter.verify((error, success) => {
+    if (error) {
+        console.log("❌ Email server error:", error);
+    } else {
+        console.log("✅ Email server is ready");
+    }
+});
+
 const sendOTP = async (email, otp, isReset = false) => {
-    const subject = isReset ? "Your Password Reset OTP" : "Your OTP for Verification";
-    const text = isReset 
-        ? `You requested a password reset. Your OTP is ${otp}. This OTP is valid for 5 minutes.`
-        : `Your OTP for registration is ${otp}. This OTP is valid for 5 minutes.`;
+    try {
+        const subject = isReset
+            ? "Your Password Reset OTP"
+            : "Your OTP for Verification";
 
-    const info = await transporter.sendMail({
-        from: process.env.EMAIL_USER,
-        to: email,
-        subject,
-        text
-    });
+        const text = isReset
+            ? `Your password reset OTP is ${otp}. Valid for 5 minutes.`
+            : `Your registration OTP is ${otp}. Valid for 5 minutes.`;
 
-    console.log("EMAIL SENT SUCCESSFULLY:", info.response);
-    return info;
+        const info = await transporter.sendMail({
+            from: `"Feedback System" <${process.env.EMAIL_USER}>`,
+            to: email,
+            subject,
+            text
+        });
+
+        console.log("📧 OTP SENT:", info.response);
+        return info;
+
+    } catch (error) {
+        console.log("❌ EMAIL FAILED:", error);
+        throw new Error("Failed to send OTP email");
+    }
 };
 
 module.exports = sendOTP;
