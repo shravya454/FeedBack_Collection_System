@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Give Feedback</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="container">
+
+    <div class="brand">
+        <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 11.5a8.38 8.38 0 0 1-1.9 5.4L21 21l-4.6-1.2A8.5 8.5 0 1 1 21 11.5Z"/>
+            <circle cx="8.5" cy="11.5" r="1" fill="currentColor" stroke="none"/>
+            <circle cx="12" cy="11.5" r="1" fill="currentColor" stroke="none"/>
+            <circle cx="15.5" cy="11.5" r="1" fill="currentColor" stroke="none"/>
+        </svg>
+        Feedback Collection System
+    </div>
+
+    <div class="eyebrow">Share Feedback</div>
+    <h1>Give Feedback</h1>
+    <p class="welcome-text">Tell us what's on your mind and pick the admin who should receive it.</p>
+
+    <form id="feedbackForm">
+        <input type="text" id="userName" placeholder="Enter Your Name" required>
+        <textarea id="feedback" placeholder="Enter Feedback" required></textarea>
+        <select id="category" required>
+            <option value="">Select Admin</option>
+            <option value="HOD">HOD</option>
+            <option value="Placement Cell">Placement Cell</option>
+            <option value="Event Coordinator">Event Coordinator</option>
+        </select>
+        <input type="email" id="adminEmail" placeholder="Enter Admin Email" required>
+        <select id="rating" required>
+            <option value="">Select Rating</option>
+            <option value="1">1 Star</option>
+            <option value="2">2 Stars</option>
+            <option value="3">3 Stars</option>
+            <option value="4">4 Stars</option>
+            <option value="5">5 Stars</option>
+        </select>
+        <button type="submit">Submit Feedback</button>
+    </form>
+
+    <p id="successMessage" class="welcome-text" style="display:none; margin-top: 18px;"></p>
+    <button id="goHomeBtn" type="button" style="display:none; width:100%; padding:12px 16px; margin-top: 4px; background:#134A3D; color:#fff; border:none; border-radius:9px; cursor:pointer;">Go Back to Home</button>
+
+</div>
+
+<script src="js/config.js"></script>
+<script src="js/feedback.js"></script>
+</body>
+</html>

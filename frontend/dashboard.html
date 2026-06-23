@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="page-split dashboard-page">
+    <section class="dashboard-sidebar">
+        <div class="sidebar-header">
+            <div>
+                <p class="eyebrow">My Account</p>
+                <h2>Admin Profile</h2>
+            </div>
+            <button id="toggleDetails" class="toggle-arrow" aria-label="Toggle account details">▶</button>
+        </div>
+
+        <div id="accountDetails" class="sidebar-details">
+            <p id="accName"></p>
+            <p id="accEmail"></p>
+            <p id="accSector"></p>
+        </div>
+
+        <div class="sidebar-stats">
+            <p class="stat-label">Feedback Received</p>
+            <p id="sidebarCount" class="stat-value">0</p>
+            <p class="stat-label" style="margin-top:18px;">Replies Sent</p>
+            <p id="sidebarReplied" class="stat-value">0</p>
+        </div>
+
+        <button id="logoutBtn" class="btn-secondary sidebar-logout">Logout</button>
+    </section>
+
+    <section class="dashboard-main">
+        <div class="brand">
+            <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M21 11.5a8.38 8.38 0 0 1-1.9 5.4L21 21l-4.6-1.2A8.5 8.5 0 1 1 21 11.5Z"/>
+                <circle cx="8.5" cy="11.5" r="1" fill="currentColor" stroke="none"/>
+                <circle cx="12" cy="11.5" r="1" fill="currentColor" stroke="none"/>
+                <circle cx="15.5" cy="11.5" r="1" fill="currentColor" stroke="none"/>
+            </svg>
+            Feedback Collection System
+        </div>
+
+        <span class="eyebrow">Admin Console</span>
+        <h1>Admin Dashboard</h1>
+        <p class="welcome-text">Review feedback from users and reply to each one below.</p>
+
+        <div id="feedbackContainer" style="margin-top:28px; width:100%; max-width:760px;"></div>
+    </section>
+</div>
+
+<script src="js/config.js"></script>
+<script src="js/app.js"></script>
+
+</body>
+</html>

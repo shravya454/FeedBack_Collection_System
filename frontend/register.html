@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="page-split">
+
+    <section class="panel panel-left">
+        <div class="brand">
+            <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M21 11.5a8.38 8.38 0 0 1-1.9 5.4L21 21l-4.6-1.2A8.5 8.5 0 1 1 21 11.5Z"/>
+                <circle cx="8.5" cy="11.5" r="1" fill="currentColor" stroke="none"/>
+                <circle cx="12" cy="11.5" r="1" fill="currentColor" stroke="none"/>
+                <circle cx="15.5" cy="11.5" r="1" fill="currentColor" stroke="none"/>
+            </svg>
+            Feedback Collection System
+        </div>
+
+        <span class="eyebrow">Join Now</span>
+        <h1>Start sharing feedback today</h1>
+        <p class="welcome-text">Register as a user or admin, then keep using the left panel context while you sign up.</p>
+    </section>
+
+    <section class="panel panel-right">
+        <span class="eyebrow">New Account</span>
+        <h1>Register</h1>
+        <p class="welcome-text">Create an account to start sending feedback to admins.</p>
+
+        <form id="registerForm">
+            <input type="text" id="name" placeholder="Enter Name" required>
+            <input type="email" id="email" placeholder="Enter Email" required>
+            <input type="password" id="password" placeholder="Enter Password" required>
+            <select id="role">
+                <option value="user">User</option>
+                <option value="admin">Admin</option>
+            </select>
+            <select id="sector" style="display:none;">
+                <option value="">Select Sector</option>
+                <option value="HOD">HOD</option>
+                <option value="Placement Cell">Placement Cell</option>
+                <option value="Event Coordinator">Event Coordinator</option>
+            </select>
+            <button type="submit">Register</button>
+        </form>
+        <p id="registerMessage" class="message" style="display:none; margin-top: 1rem;"></p>
+
+        <p>
+            Already have account?
+            <a href="loginChoice.html">Login</a>
+        </p>
+    </section>
+
+</div>
+
+<script src="js/config.js"></script>
+<script src="js/register.js"></script>
+
+</body>
+</html>

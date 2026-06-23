@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="page-split">
+
+    <section class="panel panel-left">
+        <div class="brand">
+            <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M21 11.5a8.38 8.38 0 0 1-1.9 5.4L21 21l-4.6-1.2A8.5 8.5 0 1 1 21 11.5Z"/>
+                <circle cx="8.5" cy="11.5" r="1" fill="currentColor" stroke="none"/>
+                <circle cx="12" cy="11.5" r="1" fill="currentColor" stroke="none"/>
+                <circle cx="15.5" cy="11.5" r="1" fill="currentColor" stroke="none"/>
+            </svg>
+            Feedback Collection System
+        </div>
+
+        <span class="eyebrow">Admin Access</span>
+        <h1>Admin Dashboard Access</h1>
+        <p class="welcome-text">Use your admin account to view assigned feedback and reply back to users.</p>
+
+    </section>
+
+    <section class="panel panel-right">
+        <span class="eyebrow">Admin Login</span>
+        <h1>Login</h1>
+        <p class="welcome-text">Enter your admin credentials to continue.</p>
+
+        <form id="adminLoginForm">
+            <input type="email" id="email" placeholder="Enter Admin Email" required>
+            <input type="password" id="password" placeholder="Enter Password" required>
+            <div style="text-align: right; margin-top: -8px; margin-bottom: 12px;">
+                <a href="forgotPassword.html" style="font-size: 0.88rem; color: var(--primary); font-weight: 600;">Forgot Password?</a>
+            </div>
+            <button type="submit">Login</button>
+        </form>
+
+        <p id="adminLoginMessage" class="message" style="display:none;"></p>
+
+        <p>
+            Not registered yet?
+            <a href="register.html" style="color: var(--primary); font-weight: bold;">Register</a>
+        </p>
+        <p style="margin-top: 12px;">
+            <a href="loginChoice.html" style="color: var(--muted); font-size: 0.88rem; text-decoration: none;">&larr; Back to login choice</a>
+        </p>
+    </section>
+
+</div>
+
+<script src="js/config.js"></script>
+<script src="js/adminLogin.js"></script>
+
+</body>
+</html>
