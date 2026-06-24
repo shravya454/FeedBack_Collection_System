@@ -14,6 +14,7 @@ const transporter = nodemailer.createTransport({
 });
 
 // verify connection once (VERY IMPORTANT for debugging)
+/*
 transporter.verify((error, success) => {
     if (error) {
         console.log("❌ Email server error:", error);
@@ -21,6 +22,7 @@ transporter.verify((error, success) => {
         console.log("✅ Email server is ready");
     }
 });
+*/
 
 console.log("EMAIL_USER:", process.env.EMAIL_USER);
 console.log("EMAIL_PASS exists:", !!process.env.EMAIL_PASS);
@@ -36,7 +38,7 @@ const sendOTP = async (email, otp, isReset = false) => {
             : `Your registration OTP is ${otp}. Valid for 5 minutes.`;
 
         const info = await transporter.sendMail({
-            from: `"Feedback System" <${process.env.EMAIL_USER}>`,
+            from: process.env.EMAIL_USER,
             to: email,
             subject,
             text
