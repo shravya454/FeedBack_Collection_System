@@ -1,39 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Feedback</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
 
-<div class="container">
+    <div class="container">
 
-    <div class="brand">
-        <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M21 11.5a8.38 8.38 0 0 1-1.9 5.4L21 21l-4.6-1.2A8.5 8.5 0 1 1 21 11.5Z"/>
-            <circle cx="8.5" cy="11.5" r="1" fill="currentColor" stroke="none"/>
-            <circle cx="12" cy="11.5" r="1" fill="currentColor" stroke="none"/>
-            <circle cx="15.5" cy="11.5" r="1" fill="currentColor" stroke="none"/>
-        </svg>
-        Feedback Collection System
+        <div class="brand">
+            <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M21 11.5a8.38 8.38 0 0 1-1.9 5.4L21 21l-4.6-1.2A8.5 8.5 0 1 1 21 11.5Z" />
+                <circle cx="8.5" cy="11.5" r="1" fill="currentColor" stroke="none" />
+                <circle cx="12" cy="11.5" r="1" fill="currentColor" stroke="none" />
+                <circle cx="15.5" cy="11.5" r="1" fill="currentColor" stroke="none" />
+            </svg>
+            Feedback Collection System
+        </div>
+
+        <span class="eyebrow">My Feedback</span>
+        <h1>Your Feedback History</h1>
+        <p class="welcome-text">See feedback you've submitted and the admin replies on each item.</p>
+
+        <div id="feedbackContainer"></div>
+
+        <div class="actions">
+            <a href="home.html"><button class="btn-secondary">Back to Home</button></a>
+            <button id="logoutBtn">Logout</button>
+        </div>
+
     </div>
 
-    <span class="eyebrow">My Feedback</span>
-    <h1>Your Feedback History</h1>
-    <p class="welcome-text">See feedback you've submitted and the admin replies on each item.</p>
-
-    <div id="feedbackContainer"></div>
-
-    <div class="actions">
-        <a href="home.html"><button class="btn-secondary">Back to Home</button></a>
-        <button id="logoutBtn">Logout</button>
-    </div>
-
-</div>
-
-<script src="js/config.js"></script>
-<script src="js/userFeedback.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/userFeedback.js"></script>
 </body>
+
 </html>

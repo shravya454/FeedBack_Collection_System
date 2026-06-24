@@ -212,7 +212,7 @@ exports.forgotPassword = async (req, res) => {
         await user.save();
 
         try {
-            await sendOTP(normalizedEmail, otp, true);
+            await sendOTP(normalizedEmail, otp, 'reset');
         } catch (emailError) {
             console.error("Failed to send Password Reset OTP email:", emailError);
             return res.status(500).json({ message: 'Failed to send OTP email. Please try again.' });

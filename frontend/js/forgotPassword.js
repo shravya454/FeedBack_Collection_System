@@ -7,6 +7,11 @@ const newPassword = document.getElementById('newPassword');
 const confirmPassword = document.getElementById('confirmPassword');
 const messageText = document.getElementById('messageText');
 
+// Detect if coming from admin login
+const urlParams = new URLSearchParams(window.location.search);
+const fromAdmin = urlParams.get('from') === 'admin';
+const postResetRedirect = fromAdmin ? 'adminLogin.html' : 'loginChoice.html';
+
 function showMessage(text, color) {
     messageText.textContent = text;
     messageText.style.display = 'block';
@@ -83,9 +88,13 @@ async function verifyAndResetPassword() {
         const data = await response.json();
 
         if (response.ok) {
-            showMessage(data.message || 'Password reset successfully! Redirecting to login...', '#1F6F5C');
+            const dest = fromAdmin ? 'admin login' : 'login';
+            showMessage(
+                data.message || `Password reset successfully! Redirecting to ${dest}...`,
+                '#1F6F5C'
+            );
             setTimeout(() => {
-                window.location.href = 'loginChoice.html';
+                window.location.href = postResetRedirect;
             }, 2000);
         } else {
             showMessage(data.message || 'Failed to reset password.', 'var(--danger)');

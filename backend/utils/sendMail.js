@@ -21,15 +21,20 @@ transporter.verify((error, success) => {
 console.log("EMAIL_USER:", process.env.EMAIL_USER);
 console.log("EMAIL_PASS exists:", !!process.env.EMAIL_PASS);
 
-const sendOTP = async (email, otp, isReset = false) => {
+const sendOTP = async (email, payload, mode = 'otp') => {
     try {
-        const subject = isReset
-            ? "Your Password Reset OTP"
-            : "Your OTP for Verification";
+        let subject, text;
 
-        const text = isReset
-            ? `Your password reset OTP is ${otp}. Valid for 5 minutes.`
-            : `Your registration OTP is ${otp}. Valid for 5 minutes.`;
+        if (mode === 'reset') {
+            subject = 'Your Password Reset OTP';
+            text = `Your password reset OTP is ${payload}. Valid for 5 minutes.`;
+        } else if (mode === 'reply') {
+            subject = '📬 Admin has replied to your feedback';
+            text = `Hello,\n\nAn admin has replied to your feedback:\n\n"${payload}"\n\nLog in to view the full conversation:\nhttp://localhost:5000/userFeedback.html\n\n— Feedback Collection System`;
+        } else {
+            subject = 'Your OTP for Verification';
+            text = `Your registration OTP is ${payload}. Valid for 5 minutes.`;
+        }
 
         const info = await transporter.sendMail({
             from: process.env.EMAIL_USER,
@@ -38,11 +43,11 @@ const sendOTP = async (email, otp, isReset = false) => {
             text
         });
 
-        console.log("📧 OTP SENT:", info.response);
+        console.log("📧 MAIL SENT:", info.response);
         return info;
     } catch (error) {
         console.log("❌ EMAIL FAILED:", error);
-        throw new Error("Failed to send OTP email");
+        throw new Error("Failed to send email");
     }
 };
 

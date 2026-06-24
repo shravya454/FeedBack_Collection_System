@@ -14,11 +14,10 @@ logoutBtn.addEventListener('click', ()=>{
 async function loadUserSidebar(){
     const name = localStorage.getItem('userName') || 'N/A';
     const email = localStorage.getItem('userEmail');
-    const sector = localStorage.getItem('adminSector') || '';
-
+    // Admin-only domain should not be shown on user profiles
     document.getElementById('accName').textContent = `Name: ${name}`;
     document.getElementById('accEmail').textContent = `Email: ${email || 'N/A'}`;
-    document.getElementById('accSector').textContent = sector ? `Domain: ${sector}` : '';
+    document.getElementById('accSector').textContent = '';
 
     let totalFeedbacks = 0;
     if(email){

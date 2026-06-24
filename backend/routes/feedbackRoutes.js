@@ -7,7 +7,10 @@ const {
     submitFeedback,
     getAllFeedback,
     getUserFeedback,
-    replyToFeedback
+    replyToFeedback,
+    deleteFeedback,
+    editFeedback,
+    editReply
 
 } = require('../controllers/feedbackController');
 
@@ -42,5 +45,10 @@ router.get('/admin/:email', async(req,res)=>{
     }
 
 });
+
 router.put('/reply/:id', replyToFeedback);
+router.delete('/:id', deleteFeedback);
+router.put('/edit/:id', editFeedback);
+router.put('/reply-edit/:id/:replyIndex', editReply);
+
 module.exports = router;

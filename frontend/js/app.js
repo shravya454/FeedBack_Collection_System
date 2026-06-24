@@ -1,5 +1,22 @@
 // Using global API_BASE from config.js
 
+function buildRepliesHTML(replies) {
+    if (!replies || replies.length === 0) {
+        return `<p class="no-reply-yet">No replies yet.</p>`;
+    }
+    return `
+        <div class="reply-thread">
+            ${replies.map(r => {
+                const t = new Date(r.sentAt).toLocaleString();
+                return `<div class="reply-bubble admin-bubble">
+                    <span class="reply-text">${r.text}</span>
+                    <span class="reply-meta">${t}</span>
+                </div>`;
+            }).join('')}
+        </div>
+    `;
+}
+
 async function getFeedbacks(){
 
     const adminEmail = localStorage.getItem('adminEmail');
@@ -28,53 +45,48 @@ async function getFeedbacks(){
         const date = new Date(item.createdAt)
             .toLocaleString();
 
-        feedbackContainer.innerHTML += `
+        const div = document.createElement('div');
+        div.className = 'feedback-box';
+        div.id = `fb-${item._id}`;
 
-            <div class="feedback-box">
-
-                <h3>${item.userName}</h3>
-
-                <p>${item.feedback}</p>
-
-                <p>Category: ${item.category}</p>
-
-                <p>⭐ ${item.rating}</p>
-
-                <p>
-                    Submitted:
-                    ${date}
-                </p>
-
-                <p>
-                    <strong>Admin Reply:</strong>
-                    ${item.reply || 'No reply yet'}
-                </p>
-
-                <input
-                    type="text"
-                    id="reply-${item._id}"
-                    placeholder="Type reply"
-                >
-
-                <button
-                    onclick="sendReply('${item._id}')"
-                >
-                    Send Reply
-                </button>
-
+        div.innerHTML = `
+            <h3>${item.userName}</h3>
+            <p>${item.feedback}</p>
+            <p>Category: ${item.category}</p>
+            <p>⭐ ${item.rating}</p>
+            <p>Submitted: ${date}</p>
+            <hr>
+            <p><strong>Admin Replies</strong></p>
+            <div class="reply-thread-wrap" id="thread-${item._id}">
+                ${buildRepliesHTML(item.replies)}
             </div>
-
+            <textarea
+                id="reply-${item._id}"
+                placeholder="Type your reply…"
+                rows="2"
+            ></textarea>
+            <button onclick="sendReply('${item._id}')">
+                Send Reply
+            </button>
         `;
+
+        feedbackContainer.appendChild(div);
     });
 
 }
 
 async function sendReply(id){
 
-    const reply =
-        document.getElementById(
-            `reply-${id}`
-        ).value;
+    const textarea = document.getElementById(`reply-${id}`);
+    const reply = textarea.value.trim();
+
+    if(!reply) return;
+
+    const btn = document.querySelector(`button[onclick="sendReply('${id}')"]`);
+    if(btn){
+        btn.disabled = true;
+        btn.textContent = 'Sending…';
+    }
 
     const response = await fetch(
 
@@ -94,18 +106,26 @@ async function sendReply(id){
 
     const data = await response.json();
 
-    const btn = document.querySelector(`button[onclick="sendReply('${id}')"]`);
     if(btn){
-        const originalText = btn.textContent;
+        btn.disabled = false;
         btn.textContent = response.ok ? 'Sent! ✓' : 'Failed';
         btn.style.background = response.ok ? '#1F6F5C' : 'var(--danger)';
         setTimeout(()=>{
-            btn.textContent = originalText;
+            btn.textContent = 'Send Reply';
             btn.style.background = '';
         }, 2000);
     }
 
-    getFeedbacks();
+    if(response.ok && data.updatedFeedback){
+        // Update only the thread area without full reload
+        const threadWrap = document.getElementById(`thread-${id}`);
+        if(threadWrap){
+            threadWrap.innerHTML = buildRepliesHTML(data.updatedFeedback.replies);
+        }
+        textarea.value = '';
+        // Refresh sidebar count
+        loadAdminSidebar();
+    }
 
 }
 
@@ -139,7 +159,7 @@ async function loadAdminSidebar(){
             const data = await res.json();
             if(Array.isArray(data)){
                 totalFeedbacks = data.length;
-                repliedCount = data.filter(i => i.reply && i.reply.trim() !== '').length;
+                repliedCount = data.filter(i => i.replies && i.replies.length > 0).length;
             }
         } catch (err){
             totalFeedbacks = 0;

@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&display=swap');
 
-:root{
+:root {
     --bg: #EEF3F0;
     --surface: #FFFFFF;
     --surface-soft: #E7EFEB;
@@ -26,21 +26,19 @@
     --font-body: "Manrope", "Segoe UI", Arial, sans-serif;
 }
 
-*{
+* {
     box-sizing: border-box;
 }
 
-body{
+body {
     font-family: var(--font-body);
     color: var(--ink);
     background: var(--bg);
-    background-image: repeating-linear-gradient(
-        to bottom,
-        rgba(30, 111, 191, 0.05) 0px,
-        rgba(30, 111, 191, 0.05) 1px,
-        transparent 1px,
-        transparent 34px
-    );
+    background-image: repeating-linear-gradient(to bottom,
+            rgba(30, 111, 191, 0.05) 0px,
+            rgba(30, 111, 191, 0.05) 1px,
+            transparent 1px,
+            transparent 34px);
     margin: 0;
     padding: 40px 16px;
     min-height: 100vh;
@@ -50,7 +48,7 @@ body{
    Container — styled like a sheet of notebook/feedback paper:
    a left margin rule + three "punch holes" running down the side.
    --------------------------------------------------------------- */
-.container{
+.container {
     width: 100%;
     max-width: 420px;
     margin: 40px auto;
@@ -63,11 +61,11 @@ body{
     overflow: hidden;
 }
 
-.container.container--wide{
+.container.container--wide {
     max-width: 760px;
 }
 
-.container::before{
+.container::before {
     /* red margin rule */
     content: "";
     position: absolute;
@@ -79,7 +77,7 @@ body{
     opacity: 0.45;
 }
 
-.container::after{
+.container::after {
     /* punch holes */
     content: "";
     position: absolute;
@@ -96,7 +94,7 @@ body{
 /* ---------------------------------------------------------------
    Brand mark + eyebrow labels
    --------------------------------------------------------------- */
-.brand{
+.brand {
     display: flex;
     align-items: center;
     gap: 8px;
@@ -109,14 +107,14 @@ body{
     margin: 0 0 18px;
 }
 
-.brand-icon{
+.brand-icon {
     width: 20px;
     height: 20px;
     color: var(--primary);
     flex-shrink: 0;
 }
 
-.eyebrow{
+.eyebrow {
     display: inline-block;
     font-family: var(--font-body);
     font-weight: 700;
@@ -133,7 +131,7 @@ body{
 /* ---------------------------------------------------------------
    Headings & text
    --------------------------------------------------------------- */
-h1{
+h1 {
     font-family: var(--font-display);
     font-weight: 600;
     font-size: 1.9rem;
@@ -143,39 +141,39 @@ h1{
     text-align: left;
 }
 
-.welcome-text{
+.welcome-text {
     text-align: left;
     color: var(--muted);
     font-size: 0.95rem;
     margin: 0 0 22px;
 }
 
-p{
+p {
     color: var(--muted);
     font-size: 0.92rem;
     line-height: 1.55;
 }
 
-p a{
+p a {
     color: var(--primary);
     font-weight: 700;
     text-decoration: none;
 }
 
-p a:hover{
+p a:hover {
     text-decoration: underline;
 }
 
 /* ---------------------------------------------------------------
    Forms
    --------------------------------------------------------------- */
-form{
+form {
     display: grid;
     gap: 16px;
     margin-top: 4px;
 }
 
-label{
+label {
     display: block;
     font-size: 0.78rem;
     font-weight: 700;
@@ -187,7 +185,7 @@ label{
 
 input,
 textarea,
-select{
+select {
     width: 100%;
     padding: 11px 13px;
     margin-top: 10px;
@@ -201,31 +199,31 @@ select{
     appearance: none;
 }
 
-textarea{
+textarea {
     min-height: 110px;
     resize: vertical;
     line-height: 1.5;
 }
 
 input::placeholder,
-textarea::placeholder{
+textarea::placeholder {
     color: var(--muted);
     opacity: 0.85;
 }
 
 input:focus,
 textarea:focus,
-select:focus{
+select:focus {
     outline: none;
     background: var(--surface);
     border-color: var(--primary);
     box-shadow: 0 0 0 3px var(--primary-soft);
 }
 
-select{
+select {
     cursor: pointer;
     background-image: linear-gradient(45deg, transparent 50%, var(--muted) 50%),
-                       linear-gradient(135deg, var(--muted) 50%, transparent 50%);
+        linear-gradient(135deg, var(--muted) 50%, transparent 50%);
     background-position: calc(100% - 18px) calc(50% - 3px), calc(100% - 13px) calc(50% - 3px);
     background-size: 5px 5px, 5px 5px;
     background-repeat: no-repeat;
@@ -235,7 +233,7 @@ select{
 /* ---------------------------------------------------------------
    Buttons
    --------------------------------------------------------------- */
-button{
+button {
     width: 100%;
     padding: 12px 16px;
     margin-top: 16px;
@@ -252,11 +250,11 @@ button{
     box-shadow: 0 6px 16px -8px rgba(30, 111, 191, 0.55);
 }
 
-button:hover{
+button:hover {
     background: var(--primary-dark);
 }
 
-.page-split{
+.page-split {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 24px;
@@ -267,7 +265,7 @@ button:hover{
     align-items: stretch;
 }
 
-.panel{
+.panel {
     background: var(--surface);
     border-radius: var(--radius);
     border: 1px solid var(--line);
@@ -276,14 +274,14 @@ button:hover{
     min-height: 540px;
 }
 
-.panel-left{
+.panel-left {
     padding-right: 40px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
 
-.panel-left .section-title{
+.panel-left .section-title {
     font-size: 1.1rem;
     font-weight: 700;
     margin-top: 20px;
@@ -291,7 +289,7 @@ button:hover{
     color: var(--primary-dark);
 }
 
-.feature-list{
+.feature-list {
     list-style: none;
     padding: 0;
     margin: 0;
@@ -299,93 +297,94 @@ button:hover{
     gap: 12px;
 }
 
-.feature-list li{
+.feature-list li {
     color: var(--ink);
     line-height: 1.5;
 }
 
-.panel-right{
+.panel-right {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
 }
 
 .panel-right h1,
-.panel-left h1{
+.panel-left h1 {
     margin-top: 0;
 }
 
-.panel-right form{
+.panel-right form {
     margin-top: 12px;
 }
 
-.panel-right p{
+.panel-right p {
     margin-bottom: 0;
 }
 
-.panel-right .actions{
+.panel-right .actions {
     margin-top: 20px;
 }
 
-@media (max-width: 928px){
-    .page-split{
+@media (max-width: 928px) {
+    .page-split {
         display: block;
         margin: 20px auto;
     }
 
-    .panel{
+    .panel {
         min-height: auto;
         margin-bottom: 24px;
     }
 }
 
-@media (max-width: 640px){
-    body{
+@media (max-width: 640px) {
+    body {
         padding: 20px 12px;
     }
-    .panel{
+
+    .panel {
         padding: 28px 20px;
     }
 }
 
-button:active{
+button:active {
     transform: translateY(1px);
 }
 
-button:focus-visible{
+button:focus-visible {
     outline: 3px solid var(--accent);
     outline-offset: 2px;
 }
 
 /* Plain links that wrap buttons should not show underline/colour */
-a{
+a {
     text-decoration: none;
 }
 
-a:focus-visible button{
+a:focus-visible button {
     outline: 3px solid var(--accent);
     outline-offset: 2px;
 }
 
 /* Secondary / outline style — used for logout and stacked nav buttons */
-a + a button,
+a+a button,
 #logoutBtn,
-.btn-secondary{
+.btn-secondary {
     background: var(--surface);
     color: var(--primary-dark);
     border: 1.5px solid var(--line);
     box-shadow: none;
 }
 
-a + a button:hover,
+a+a button:hover,
 #logoutBtn:hover,
-.btn-secondary:hover{
+.btn-secondary:hover {
     background: var(--primary-soft);
     border-color: var(--primary);
     color: var(--primary-dark);
 }
 
-#logoutBtn{
+#logoutBtn {
     width: auto;
     padding: 9px 18px;
     margin: 0 0 22px;
@@ -394,17 +393,17 @@ a + a button:hover,
 }
 
 /* Modal styles for My Account */
-.modal{
+.modal {
     position: fixed;
     inset: 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(0,0,0,0.4);
+    background: rgba(0, 0, 0, 0.4);
     z-index: 9999;
 }
 
-.modal-content{
+.modal-content {
     background: var(--surface);
     color: var(--ink);
     padding: 20px 22px;
@@ -413,17 +412,22 @@ a + a button:hover,
     box-shadow: var(--shadow);
 }
 
-.actions{
+.actions {
     display: flex;
     flex-direction: column;
     gap: 14px;
 }
 
-.actions a button{
+/* Ensure actions inside the main container have breathing room */
+.container .actions {
+    margin-top: 18px;
+}
+
+.actions a button {
     margin-top: 0;
 }
 
-.page-split{
+.page-split {
     display: grid;
     grid-template-columns: 1.1fr 0.9fr;
     min-height: 100vh;
@@ -433,7 +437,7 @@ a + a button:hover,
     background: linear-gradient(180deg, #F4F8FF 0%, #EDF3FF 100%);
 }
 
-.panel{
+.panel {
     min-height: 100vh;
     border-radius: 0;
     border: none;
@@ -443,7 +447,7 @@ a + a button:hover,
     overflow: hidden;
 }
 
-.panel-left{
+.panel-left {
     background: linear-gradient(135deg, #3248FF 0%, #1B57D1 100%);
     color: #FFFFFF;
     padding: 64px 56px;
@@ -452,38 +456,38 @@ a + a button:hover,
     justify-content: center;
 }
 
-.panel-left .brand{
+.panel-left .brand {
     color: #FFFFFF;
 }
 
-.panel-left .brand-icon{
+.panel-left .brand-icon {
     color: #FFFFFF;
 }
 
-.panel-left .eyebrow{
-    background: rgba(255,255,255,0.16);
+.panel-left .eyebrow {
+    background: rgba(255, 255, 255, 0.16);
     color: #FFFFFF;
 }
 
-.panel-left h1{
+.panel-left h1 {
     color: #FFFFFF;
     font-size: clamp(2.5rem, 2.9vw, 3.6rem);
     margin-bottom: 18px;
 }
 
-.panel-left .welcome-text{
-    color: rgba(255,255,255,0.85);
+.panel-left .welcome-text {
+    color: rgba(255, 255, 255, 0.85);
     margin-bottom: 32px;
     font-size: 1rem;
 }
 
-.panel-left .section-title{
+.panel-left .section-title {
     color: #FFFFFF;
     margin-top: 30px;
     margin-bottom: 18px;
 }
 
-.feature-list{
+.feature-list {
     list-style: none;
     padding: 0;
     margin: 0;
@@ -491,13 +495,13 @@ a + a button:hover,
     gap: 14px;
 }
 
-.feature-list li{
-    color: rgba(255,255,255,0.92);
+.feature-list li {
+    color: rgba(255, 255, 255, 0.92);
     font-size: 0.96rem;
     line-height: 1.75;
 }
 
-.panel-right{
+.panel-right {
     background: #FFFFFF;
     padding: 40px 44px;
     display: flex;
@@ -507,37 +511,37 @@ a + a button:hover,
     min-height: 100vh;
 }
 
-.panel-right .brand{
+.panel-right .brand {
     margin-bottom: 28px;
 }
 
-.panel-right h1{
+.panel-right h1 {
     margin-bottom: 10px;
 }
 
-.panel-right .welcome-text{
+.panel-right .welcome-text {
     margin-bottom: 28px;
 }
 
-.panel-right form{
+.panel-right form {
     width: 100%;
     max-width: 420px;
     margin-top: 0;
 }
 
-.panel-right p{
+.panel-right p {
     max-width: 420px;
 }
 
-.panel-right .actions{
+.panel-right .actions {
     margin-top: 24px;
 }
 
-.panel-right .actions a button{
+.panel-right .actions a button {
     width: 100%;
 }
 
-.dashboard-page{
+.dashboard-page {
     display: grid;
     grid-template-columns: 320px 1fr;
     min-height: 100vh;
@@ -548,12 +552,12 @@ a + a button:hover,
 }
 
 .dashboard-sidebar,
-.dashboard-main{
+.dashboard-main {
     min-height: 100vh;
     padding: 40px 36px;
 }
 
-.dashboard-sidebar{
+.dashboard-sidebar {
     background: #FFFFFF;
     border-right: 1px solid var(--line);
     display: flex;
@@ -561,7 +565,7 @@ a + a button:hover,
     justify-content: flex-start;
 }
 
-.sidebar-header{
+.sidebar-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -569,17 +573,17 @@ a + a button:hover,
     margin-bottom: 22px;
 }
 
-.sidebar-header .eyebrow{
+.sidebar-header .eyebrow {
     margin: 0 0 6px;
 }
 
-.sidebar-header h2{
+.sidebar-header h2 {
     margin: 0;
     font-size: 1.6rem;
     color: var(--ink);
 }
 
-.toggle-arrow{
+.toggle-arrow {
     width: 38px;
     height: 38px;
     border-radius: 50%;
@@ -599,15 +603,15 @@ a + a button:hover,
     transition: transform 0.2s ease;
 }
 
-.toggle-arrow:active{
+.toggle-arrow:active {
     transform: none;
 }
 
-.toggle-arrow.expanded{
+.toggle-arrow.expanded {
     transform: rotate(90deg);
 }
 
-.sidebar-details{
+.sidebar-details {
     border: none;
     background: transparent;
     padding: 0;
@@ -615,82 +619,86 @@ a + a button:hover,
     margin-bottom: 18px;
 }
 
-.sidebar-details.active{
+.sidebar-details.active {
     display: block;
 }
 
-.sidebar-details p{
+.sidebar-details p {
     margin: 6px 0;
     color: var(--ink);
 }
 
-.sidebar-stats{
+.sidebar-stats {
     margin-bottom: 28px;
 }
 
-.stat-label{
+.stat-label {
     font-size: 0.88rem;
     color: var(--muted);
     margin-bottom: 8px;
 }
 
-.stat-value{
+.stat-value {
     font-size: 2rem;
     font-weight: 700;
     color: var(--primary-dark);
     margin: 0;
 }
 
-.sidebar-logout{
+.sidebar-logout {
     margin-top: auto;
     width: auto;
     align-self: flex-start;
 }
 
-.dashboard-main{
+.dashboard-main {
     background: #F8FBFF;
 }
 
-.dashboard-main .brand{
+.dashboard-main .brand {
     margin-bottom: 26px;
 }
 
-.dashboard-main .actions{
+.dashboard-main .actions {
     margin-top: 32px;
     max-width: 420px;
 }
 
 .panel-right .actions a button:not(.btn-secondary),
-.dashboard-main .actions a button:not(.btn-secondary){
+.dashboard-main .actions a button:not(.btn-secondary) {
     background: var(--primary);
     color: #ffffff;
     border: none;
     box-shadow: 0 6px 16px -8px rgba(30, 111, 191, 0.55);
 }
 
-@media (max-width: 960px){
-    .dashboard-page{
+@media (max-width: 960px) {
+    .dashboard-page {
         grid-template-columns: 1fr;
     }
+
     .dashboard-sidebar,
-    .dashboard-main{
+    .dashboard-main {
         padding: 32px 28px;
     }
 }
 
-@media (max-width: 640px){
-    body{
+@media (max-width: 640px) {
+    body {
         padding: 0;
     }
-    .dashboard-page{
+
+    .dashboard-page {
         width: 100%;
     }
+
     .dashboard-sidebar,
-    .dashboard-main{
+    .dashboard-main {
         padding: 24px 18px;
     }
+
     .dashboard-main .actions,
-    .dashboard-sidebar .actions{
+    .dashboard-sidebar .actions {
         width: 100%;
     }
 }
@@ -698,7 +706,7 @@ a + a button:hover,
 /* ---------------------------------------------------------------
    Feedback ticket cards (admin dashboard)
    --------------------------------------------------------------- */
-#feedbackContainer{
+#feedbackContainer {
     clear: both;
     display: flex;
     flex-direction: column;
@@ -706,7 +714,7 @@ a + a button:hover,
     margin-top: 4px;
 }
 
-#feedbackContainer:empty::after{
+#feedbackContainer:empty::after {
     content: "No feedback yet — check back once users start submitting.";
     display: block;
     text-align: center;
@@ -719,7 +727,7 @@ a + a button:hover,
     padding: 28px 18px;
 }
 
-.feedback-box{
+.feedback-box {
     background: var(--surface);
     border: 1px solid var(--line);
     border-left: 4px solid var(--accent);
@@ -729,7 +737,7 @@ a + a button:hover,
     box-shadow: var(--shadow);
 }
 
-.feedback-box::before{
+.feedback-box::before {
     /* torn-paper top edge */
     content: "";
     position: absolute;
@@ -737,19 +745,17 @@ a + a button:hover,
     left: -1px;
     right: -1px;
     height: 6px;
-    background-image: repeating-linear-gradient(
-        -45deg,
-        var(--bg) 0,
-        var(--bg) 5px,
-        transparent 5px,
-        transparent 10px
-    );
+    background-image: repeating-linear-gradient(-45deg,
+            var(--bg) 0,
+            var(--bg) 5px,
+            transparent 5px,
+            transparent 10px);
     border-radius: 10px 10px 0 0;
 }
 
 .feedback-box h2,
 .feedback-box h3,
-.feedback-box h4{
+.feedback-box h4 {
     font-family: var(--font-display);
     font-weight: 600;
     font-size: 1.1rem;
@@ -757,28 +763,28 @@ a + a button:hover,
     color: var(--ink);
 }
 
-.feedback-box p{
+.feedback-box p {
     margin: 4px 0;
     color: var(--ink);
     font-size: 0.92rem;
 }
 
 .feedback-box p strong,
-.feedback-box b{
+.feedback-box b {
     color: var(--primary-dark);
 }
 
-.feedback-box hr{
+.feedback-box hr {
     border: none;
     border-top: 1px dashed var(--line);
     margin: 12px 0;
 }
 
-.feedback-box textarea{
+.feedback-box textarea {
     margin-top: 10px;
 }
 
-.feedback-box button{
+.feedback-box button {
     width: auto;
     padding: 9px 18px;
     font-size: 0.85rem;
@@ -788,28 +794,96 @@ a + a button:hover,
 /* ---------------------------------------------------------------
    Responsive tweaks
    --------------------------------------------------------------- */
-@media (max-width: 480px){
-    .container{
+@media (max-width: 480px) {
+    .container {
         padding: 28px 20px 24px 46px;
         margin: 16px auto;
     }
 
-    .container::before{
+    .container::before {
         left: 32px;
     }
 
-    .container::after{
+    .container::after {
         left: 12px;
         background-size: 9px 60px;
     }
 
-    h1{
+    h1 {
         font-size: 1.55rem;
     }
 
-    #logoutBtn{
+    #logoutBtn {
         float: none;
         width: 100%;
         margin-bottom: 18px;
     }
+}
+
+/* ---------------------------------------------------------------
+   Reply thread — admin bubble list
+   --------------------------------------------------------------- */
+.reply-thread-wrap {
+    margin: 6px 0 10px;
+}
+
+.reply-thread {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 4px 0;
+}
+
+.reply-bubble {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    padding: 10px 14px;
+    border-radius: 10px;
+    max-width: 94%;
+    position: relative;
+    animation: bubbleFadeIn 0.2s ease;
+}
+
+@keyframes bubbleFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(6px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.admin-bubble {
+    background: var(--primary-soft);
+    border-left: 3px solid var(--primary);
+    align-self: flex-start;
+}
+
+.reply-text {
+    font-size: 0.93rem;
+    color: var(--ink);
+    line-height: 1.5;
+    font-family: var(--font-body);
+}
+
+.reply-meta {
+    font-size: 0.72rem;
+    color: var(--muted);
+    letter-spacing: 0.01em;
+}
+
+.no-reply-yet {
+    font-size: 0.85rem;
+    color: var(--muted);
+    font-style: italic;
+    margin: 4px 0 8px;
+}
+
+.feedback-box textarea {
+    min-height: 60px;
+    resize: vertical;
 }

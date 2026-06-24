@@ -29,9 +29,14 @@ const FeedbackSchema = new mongoose.Schema({
         type:Number,
         required:true
     },
-    reply:{
-        type:String,
-        default:''
+    replies:{
+        type:[
+            {
+                text:{ type:String, required:true },
+                sentAt:{ type:Date, default:Date.now }
+            }
+        ],
+        default:[]
     },
     createdAt:{
         type:Date,
