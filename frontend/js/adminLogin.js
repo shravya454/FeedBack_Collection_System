@@ -16,17 +16,18 @@ adminLoginForm.addEventListener('submit', async(e)=>{
             },
             body:JSON.stringify({
                 email,
-                password
+                password,
+                role: 'admin'
             })
         });
 
         const data = await response.json();
 
-        if(response.ok){
+       if(response.ok){
             if(data.role !== 'admin'){
-                adminLoginMessage.textContent = 'This account is a user. Please login in the user page.';
-                adminLoginMessage.style.display = 'block';
-                adminLoginMessage.style.color = '#C0392B';
+                loginMessage.textContent = 'This account is an user. Please login in the user page.';
+                loginMessage.style.display = 'block';
+                loginMessage.style.color = '#C0392B';
                 return;
             }
             localStorage.setItem('adminEmail', data.email || email);

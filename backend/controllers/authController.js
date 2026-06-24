@@ -49,7 +49,7 @@ exports.registerUser = async(req, res) => {
 
 exports.loginUser = async(req, res) => {
     try {
-        const { email, password } = req.body;
+        const { email, password, role: expectedRole } = req.body;
         const normalizedEmail = email?.trim().toLowerCase();
 
         if (!normalizedEmail) {
@@ -59,6 +59,13 @@ exports.loginUser = async(req, res) => {
         const user = await User.findOne({ email: normalizedEmail });
         if (!user) {
             return res.status(400).json({ message: 'Email is not registered' });
+        }
+
+        if (expectedRole && user.role !== expectedRole) {
+            const message = expectedRole === 'admin'
+                ? 'This account is a user. Please login in the user page.'
+                : 'This account is an admin. Please login in the admin page.';
+            return res.status(400).json({ message });
         }
 
         if (user.otp && user.otp !== '') {

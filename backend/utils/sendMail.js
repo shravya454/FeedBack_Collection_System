@@ -1,7 +1,7 @@
 const nodemailer = require("nodemailer");
 
 const transporter = nodemailer.createTransport({
-    host: "smtp-relay.brevo.com",
+    host: "smtp.gmail.com",
     port: 465,
     secure: true,
     auth: {
@@ -13,16 +13,10 @@ const transporter = nodemailer.createTransport({
     socketTimeout: 30000
 });
 
-// verify connection once (VERY IMPORTANT for debugging)
-/*
 transporter.verify((error, success) => {
-    if (error) {
-        console.log("❌ Email server error:", error);
-    } else {
-        console.log("✅ Email server is ready");
-    }
+    if (error) console.log("SMTP verify failed:", error);
+    else console.log("SMTP is ready");
 });
-*/
 
 console.log("EMAIL_USER:", process.env.EMAIL_USER);
 console.log("EMAIL_PASS exists:", !!process.env.EMAIL_PASS);
@@ -46,7 +40,6 @@ const sendOTP = async (email, otp, isReset = false) => {
 
         console.log("📧 OTP SENT:", info.response);
         return info;
-
     } catch (error) {
         console.log("❌ EMAIL FAILED:", error);
         throw new Error("Failed to send OTP email");
