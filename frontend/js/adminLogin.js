@@ -36,9 +36,16 @@ adminLoginForm.addEventListener('submit', async(e)=>{
             return;
         }
 
-        adminLoginMessage.textContent = data.message || 'Login failed';
         adminLoginMessage.style.display = 'block';
-        adminLoginMessage.style.color = '#C0392B';
+
+        if(data.message === 'Please verify your email first'){
+            adminLoginMessage.style.color = '#E67E22';
+            adminLoginMessage.innerHTML = 'Please verify your email first. <a href="otp.html" style="color: var(--primary); text-decoration: underline; font-weight: bold;">Click here to enter OTP</a>';
+            localStorage.setItem('verifyEmail', email);
+        } else {
+            adminLoginMessage.textContent = data.message || 'Login failed';
+            adminLoginMessage.style.color = '#C0392B';
+        }
     } catch (error) {
         adminLoginMessage.textContent = 'Unable to reach the server. Start the backend and refresh.';
         adminLoginMessage.style.display = 'block';
